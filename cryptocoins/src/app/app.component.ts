@@ -7,7 +7,7 @@ import { AppHeaderComponent } from './app-header/app-header.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CryptoCoin$';
+ // title = 'CryptoCoin$';
   
 }
 
