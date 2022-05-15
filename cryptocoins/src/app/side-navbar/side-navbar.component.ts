@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-navbar.component.scss'],
 })
 export class SideNavbarComponent implements OnInit {
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(
-    window.location.host
-  );
-
   constructor() {}
 
   ngOnInit(): void {}
