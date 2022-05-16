@@ -27,9 +27,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
+import { MarketAnalysisComponent } from './pages/home/market-analysis/market-analysis.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
 
 @NgModule({
-  declarations: [AppComponent, SideNavbarComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    SideNavbarComponent,
+    HomeComponent,
+    MarketAnalysisComponent,
+    WalletComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule,
