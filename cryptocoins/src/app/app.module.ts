@@ -29,6 +29,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
 import { MarketAnalysisComponent } from './pages/home/market-analysis/market-analysis.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
+import { HelpComponent } from './pages/help/help.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { WalletComponent } from './pages/wallet/wallet.component';
     HomeComponent,
     MarketAnalysisComponent,
     WalletComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
