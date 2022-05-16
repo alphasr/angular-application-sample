@@ -25,9 +25,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, SideNavbarComponent],
+  declarations: [AppComponent, SideNavbarComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
