@@ -25,12 +25,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, SideNavbarComponent, HomeComponent],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     MdbAccordionModule,
     MdbCarouselModule,
