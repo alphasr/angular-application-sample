@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
@@ -32,14 +32,7 @@ import { WalletComponent } from './pages/wallet/wallet.component';
 import { HelpComponent } from './pages/help/help.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SideNavbarComponent,
-    HomeComponent,
-    MarketAnalysisComponent,
-    WalletComponent,
-    HelpComponent,
-  ],
+  declarations: [AppComponent, SideNavbarComponent, routingComponent],
   imports: [
     BrowserModule,
     RouterModule,
