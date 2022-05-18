@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-side-navbar',
   templateUrl: './side-navbar.component.html',
-  styleUrls: ['./side-navbar.component.scss']
+  styleUrls: ['./side-navbar.component.scss'],
 })
 export class SideNavbarComponent implements OnInit {
+  isShowing: boolean = false;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  toggleSidenav() {
+    this.isShowing = !this.isShowing;
   }
 
+  ngOnInit(): void {}
 }
