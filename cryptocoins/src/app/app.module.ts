@@ -25,11 +25,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
-import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
-import { MarketAnalysisComponent } from './pages/home/market-analysis/market-analysis.component';
-import { WalletComponent } from './pages/wallet/wallet.component';
-import { HelpComponent } from './pages/help/help.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [AppComponent, SideNavbarComponent, routingComponent],
@@ -59,6 +56,7 @@ import { HelpComponent } from './pages/help/help.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
