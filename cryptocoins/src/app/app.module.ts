@@ -12,9 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
+import { AppHeaderComponent } from './header/app-header/app-header.component';
 
 @NgModule({
-  declarations: [AppComponent, SideNavbarComponent, routingComponent],
+  declarations: [AppComponent, SideNavbarComponent, routingComponent, AppHeaderComponent],
   imports: [
     BrowserModule,
     RouterModule,
