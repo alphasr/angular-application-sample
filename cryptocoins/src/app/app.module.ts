@@ -13,9 +13,15 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
 import { AppHeaderComponent } from './header/app-header/app-header.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
-  declarations: [AppComponent, SideNavbarComponent, routingComponent, AppHeaderComponent],
+  declarations: [
+    AppComponent,
+    SideNavbarComponent,
+    routingComponent,
+    AppHeaderComponent,
+  ],
   imports: [
     BrowserModule,
     RouterModule,
@@ -28,6 +34,7 @@ import { AppHeaderComponent } from './header/app-header/app-header.component';
     MatDividerModule,
     MatListModule,
     AgGridModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

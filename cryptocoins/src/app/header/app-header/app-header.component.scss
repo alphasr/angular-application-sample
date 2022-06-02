@@ -1,18 +1,37 @@
 mat-toolbar {
-  background: #004a9f;
-  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.app-heading {
-  padding-left: 5px;
-  font-size: 5vh;
+
+ul {
+  li {
+    list-style: none;
+  }
 }
-.app-menu-heading {
-  padding-left: 10vh;
+button {
+  outline: none;
+  border: 0;
+  background: transparent;
 }
-.avatar {
-  margin-top: 5px;
-  padding-bottom: 7px;
-  width: 100px;
-  height: 100px;
+.user {
+  font-size: 14px;
+}
+mat-toolbar {
+  background: #f7f7f7;
+}
+.user-image {
   border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  &-icon {
+    height: 18px;
+    font-size: 16px;
+  }
+}
+
+::ng-deep {
+  .mat-menu-content {
+    width: 160px;
+  }
 }

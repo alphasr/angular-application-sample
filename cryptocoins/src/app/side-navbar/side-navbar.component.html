@@ -1,23 +1,18 @@
-<mat-sidenav-container>
-  <mat-sidenav mode="side" class="mat-elevation-z8" opened>
-    <h4 class="name">Menu</h4>
-    <button mat-button class="menu-button" routerLink="/home">
-      <mat-icon>home</mat-icon>
-      <span>Home</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/market">
-      <mat-icon>shop</mat-icon>
-      <span>Market Analysis</span>
-    </button>
-    <button mat-button class="menu-button" routerLink="/wallet">
-      <mat-icon>account_balance_wallet</mat-icon>
-      <span>Wallet</span>
-    </button>
-    <mat-divider></mat-divider>
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="./assets/logo.svg" alt="Company Logo" />
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
 
-    <button mat-button class="menu-button" routerLink="/help">
-      <mat-icon>help</mat-icon>
-      <span>Help!</span>
-    </button>
-  </mat-sidenav>
-</mat-sidenav-container>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item> <mat-icon>edit</mat-icon> Link 3 </a>
+  <a mat-list-item> <mat-icon>edit</mat-icon> Link 4 </a>
+  <a mat-list-item> <mat-icon>edit</mat-icon> Link 5 </a>
+  <a mat-list-item> <mat-icon>edit</mat-icon> Link 6 </a>
+</mat-nav-list>
