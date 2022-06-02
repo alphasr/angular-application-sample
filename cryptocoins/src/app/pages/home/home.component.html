@@ -1,8 +1,14 @@
-<p>Home</p>
-<ag-grid-angular
-  style="width: 500px; height: 150px"
-  class="ag-theme-alpine"
-  [rowData]="rowData"
-  [columnDefs]="columnDefs"
->
-</ag-grid-angular>
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Home</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="page__content-data position-absolute text-center">
+      <ag-grid-angular
+        style="width: 500px; height: 150px"
+        class="ag-theme-alpine"
+        [rowData]="rowData"
+        [columnDefs]="columnDefs"
+      >
+      </ag-grid-angular>
+    </div>
+  </div>
+</div>

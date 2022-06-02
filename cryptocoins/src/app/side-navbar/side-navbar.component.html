@@ -1,18 +1,17 @@
 <mat-nav-list>
-  <div class="logo py-4">
-    <img src="./assets/logo.svg" alt="Company Logo" />
-  </div>
-  <mat-divider></mat-divider>
-  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+  <h2 matSubheader class="mt-2">Menu</h2>
 
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
     <mat-icon>home</mat-icon> Home
   </a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
-    <mat-icon>dashboard</mat-icon> Dashboard
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/wallet">
+    <mat-icon>wallet</mat-icon> Wallet
   </a>
-  <a mat-list-item> <mat-icon>edit</mat-icon> Link 3 </a>
-  <a mat-list-item> <mat-icon>edit</mat-icon> Link 4 </a>
-  <a mat-list-item> <mat-icon>edit</mat-icon> Link 5 </a>
-  <a mat-list-item> <mat-icon>edit</mat-icon> Link 6 </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/market">
+    <mat-icon>graphic_eq</mat-icon> Market Analysis
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/help">
+    <mat-icon>help</mat-icon> Help
+  </a>
 </mat-nav-list>
