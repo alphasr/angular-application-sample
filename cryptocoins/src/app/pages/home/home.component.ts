@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   columnDefs: ColDef[] = [
-    { field: 'Name' },
-    { field: 'Symbol' },
-    { field: 'Price' },
+    { field: 'Name',width: 80  },
+    { field: 'Symbol',width: 80  },
+    { field: 'Price',width:80 },
   ];
 
   rowData = [
