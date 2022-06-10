@@ -10,12 +10,12 @@ import { CryptolistService } from '../../services/cryptolist.service';
 export class HomeComponent implements OnInit {
   constructor(private cryptoListService: CryptolistService) {}
   rowData: Coin[] = [];
+  list: Coin[] = [];
 
   ngOnInit(): void {
     this.getList();
     this.rowData = this.list;
   }
-  list: Coin[] = [];
 
   columnDefs: ColDef[] = [
     { field: 'name', width: 100 },
