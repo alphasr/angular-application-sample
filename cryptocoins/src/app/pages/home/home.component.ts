@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   columnDefs: ColDef[] = [
-    { field: 'name', width: 100 },
-    { field: 'symbol', width: 80 },
-    { field: 'price', width: 80 },
+    { field: 'name', width: 100, headerName: 'Name' },
+    { field: 'symbol', width: 80, headerName: 'Symbol' },
+    { field: 'price', width: 80, headerName: 'Price' },
   ];
 
   rowData = CRYPTOLIST;
