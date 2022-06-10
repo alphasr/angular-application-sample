@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
+import { CRYPTOLIST } from 'src/app/mock-data-list';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   columnDefs: ColDef[] = [
-    { field: 'Name',width: 80  },
-    { field: 'Symbol',width: 80  },
-    { field: 'Price',width:80 },
+    { field: 'name', width: 100 },
+    { field: 'symbol', width: 80 },
+    { field: 'price', width: 80 },
   ];
 
-  rowData = [
-    { Name: 'Bitcoin', Symbol: 'BTC', Price: 35000 },
-    { Name: 'Ethereum', Symbol: 'ETH', Price: 3200 },
-    { Name: 'Gala', Symbol: 'GAL', Price: 1.5 },
-  ];
+  rowData = CRYPTOLIST;
 }
