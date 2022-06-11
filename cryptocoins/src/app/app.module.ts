@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
 import { AppHeaderComponent } from './header/app-header/app-header.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatListModule,
     AgGridModule,
     MatMenuModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

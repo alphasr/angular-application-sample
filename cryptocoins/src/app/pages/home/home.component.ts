@@ -10,11 +10,9 @@ import { CryptolistService } from '../../services/cryptolist.service';
 export class HomeComponent implements OnInit {
   constructor(private cryptoListService: CryptolistService) {}
   rowData: Coin[] = [];
-  list: Coin[] = [];
 
   ngOnInit(): void {
-    this.getList();
-    this.rowData = this.list;
+    this.getHttpData();
   }
 
   columnDefs: ColDef[] = [
@@ -22,9 +20,11 @@ export class HomeComponent implements OnInit {
     { field: 'symbol', width: 80 },
     { field: 'price', width: 80 },
   ];
-  getList(): void {
-    this.cryptoListService
-      .getList()
-      .subscribe((cryptos) => (this.list = cryptos));
+  handleError() {}
+
+  getHttpData() {
+    this.cryptoListService.getJSON().subscribe((data) => {
+      this.rowData = data;
+    });
   }
 }

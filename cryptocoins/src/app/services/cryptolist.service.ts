@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Coin } from '../Coin';
-import { CRYPTOS } from '../mock-data-list';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CryptolistService {
-  constructor() {}
-  getList(): Observable<Coin[]> {
-    const cryptos = of(CRYPTOS);
-    return cryptos;
+  jsonFile = 'assets/mock-data.json';
+
+  constructor(private http: HttpClient) {}
+
+  getJSON(): Observable<any> {
+    return this.http.get(this.jsonFile);
   }
 }
