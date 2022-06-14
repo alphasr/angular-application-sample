@@ -6,7 +6,8 @@
         class="ag-theme-balham"
         [rowData]="rowData"
         [columnDefs]="columnDefs"
-        [rowSelection]="'multiple'"
+        onCellValueChanged="{this.onCellValueChanged}"
+        (cellValueChanged)="onCellValueChanged($event)"
       >
       </ag-grid-angular>
     </div>

@@ -16,7 +16,11 @@ export class HomeComponent implements OnInit {
   }
 
   columnDefs: ColDef[] = [
-    { field: 'name', width: 100 },
+    {
+      field: 'name',
+      width: 100,
+      editable: true,
+    },
     { field: 'symbol', width: 80 },
     { field: 'price', width: 80 },
   ];
@@ -26,5 +30,8 @@ export class HomeComponent implements OnInit {
     this.cryptoListService.getJSON().subscribe((data) => {
       this.rowData = data;
     });
+  }
+  onCellValueChanged(params: any) {
+    console.log(JSON.stringify(params.value));
   }
 }
