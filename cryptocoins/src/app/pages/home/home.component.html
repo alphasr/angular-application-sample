@@ -3,10 +3,11 @@
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute text-center">
       <ag-grid-angular
-        style="width: 500px; height: 150px"
         class="ag-theme-balham"
         [rowData]="rowData"
         [columnDefs]="columnDefs"
+        onCellValueChanged="{this.onCellValueChanged}"
+        (cellValueChanged)="onCellValueChanged($event)"
       >
       </ag-grid-angular>
     </div>
