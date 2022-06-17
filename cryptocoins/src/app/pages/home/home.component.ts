@@ -20,9 +20,14 @@ export class HomeComponent implements OnInit {
       field: 'name',
       width: 100,
       editable: true,
+      filter: 'agTextColumnFilter',
+      filterParams: {
+        buttons: ['reset', 'apply'],
+        debounceMs: 200,
+      },
     },
     { field: 'symbol', width: 80 },
-    { field: 'price', width: 80 },
+    { field: 'price', width: 80, filter: 'agNumberColumnFilter' },
   ];
   handleError() {}
 
