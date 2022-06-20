@@ -2,12 +2,20 @@
   <div class="d-flex page__box p-3 mt-2">Home</div>
   <div class="page__content shadow p-3 position-relative">
     <div class="page__content-data position-absolute text-center">
+      <input
+        type="text"
+        placeholder="search"
+        [(ngModel)]="searchValue"
+        (ngModelChange)="onSearchTextChanged()"
+        style="margin: 5px; width: 100px"
+      />
       <ag-grid-angular
         class="ag-theme-balham"
         [rowData]="rowData"
         [columnDefs]="columnDefs"
         onCellValueChanged="{this.onCellValueChanged}"
         (cellValueChanged)="onCellValueChanged($event)"
+        (gridReady)="onGridReady($event)"
       >
       </ag-grid-angular>
     </div>

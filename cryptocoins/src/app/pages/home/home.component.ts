@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, ValueFormatterParams } from 'ag-grid-community';
 import { Coin } from 'src/app/Coin';
 import { CryptolistService } from '../../services/cryptolist.service';
 @Component({
@@ -10,25 +10,26 @@ import { CryptolistService } from '../../services/cryptolist.service';
 export class HomeComponent implements OnInit {
   constructor(private cryptoListService: CryptolistService) {}
   rowData: Coin[] = [];
-
+  searchValue: any;
+  gridApiActive: any;
   ngOnInit(): void {
-    this.getHttpData();
+    this.columnDefs = [
+      {
+        field: 'name',
+        width: 100,
+        editable: true,
+        filter: 'agTextColumnFilter',
+      },
+      { field: 'symbol', width: 80 },
+      {
+        field: 'price',
+        width: 80,
+        filter: 'agNumberColumnFilter',
+      },
+    ];
   }
 
-  columnDefs: ColDef[] = [
-    {
-      field: 'name',
-      width: 100,
-      editable: true,
-      filter: 'agTextColumnFilter',
-      filterParams: {
-        buttons: ['reset', 'apply'],
-        debounceMs: 200,
-      },
-    },
-    { field: 'symbol', width: 80 },
-    { field: 'price', width: 80, filter: 'agNumberColumnFilter' },
-  ];
+  columnDefs: ColDef[] = [];
   handleError() {}
 
   getHttpData() {
@@ -38,5 +39,12 @@ export class HomeComponent implements OnInit {
   }
   onCellValueChanged(params: any) {
     console.log(JSON.stringify(params.value));
+  }
+  onGridReady(params: any) {
+    this.gridApiActive = params.api;
+    this.getHttpData();
+  }
+  onSearchTextChanged() {
+    this.gridApiActive.setQuickFilter(this.searchValue);
   }
 }
