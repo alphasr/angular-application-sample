@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
   getData() {
     this.cryptoListService.getJSONSSRM().subscribe((data: any) => {
       this.serverSideDatasource = createServerSideDatasource(data.slice());
-      return this.serverSideDatasource;
     });
   }
   onCellValueChanged(params: any) {
@@ -55,9 +54,7 @@ export class HomeComponent implements OnInit {
   }
   onGridReady(params: any) {
     this.gridApiActive = params.api;
-    //this.getHttpData();
-    //this.getData();
-    this.gridApiActive!.setServerSideDatasource(this.getData());
+    this.getData();
   }
 
   onSearchTextChanged() {
