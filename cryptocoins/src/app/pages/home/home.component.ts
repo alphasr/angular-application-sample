@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   getData() {
-    this.cryptoListService.getJSONSSRM().subscribe((data: any) => {
+    this.cryptoListService.getJSON().subscribe((data: any) => {
       this.serverSideDatasource = createServerSideDatasource(data.slice());
     });
   }
