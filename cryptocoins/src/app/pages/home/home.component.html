@@ -11,8 +11,8 @@
       />
       <ag-grid-angular
         class="ag-theme-balham"
-        [rowData]="rowData"
         [columnDefs]="columnDefs"
+        [serverSideDatasource]="serverSideDatasource"
         [rowModelType]="rowModelType"
         onCellValueChanged="{this.onCellValueChanged}"
         (cellValueChanged)="onCellValueChanged($event)"

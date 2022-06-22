@@ -13,4 +13,8 @@ export class CryptolistService {
   getJSON(): Observable<any> {
     return this.http.get(this.jsonFile);
   }
+
+  getJSONSSRM(): Observable<any> {
+    return this.http.get<any[]>(this.jsonFile);
+  }
 }

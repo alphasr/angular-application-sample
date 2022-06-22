@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
   ColDef,
   IServerSideDatasource,
   IServerSideGetRowsRequest,
-  ValueFormatterParams,
 } from 'ag-grid-community';
 import { Coin } from 'src/app/Coin';
 import { CryptolistService } from '../../services/cryptolist.service';
@@ -14,13 +12,11 @@ import { CryptolistService } from '../../services/cryptolist.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(
-    private cryptoListService: CryptolistService,
-    private http: HttpClient
-  ) {}
+  constructor(private cryptoListService: CryptolistService) {}
   rowData: Coin[] = [];
   searchValue: any;
   gridApiActive: any;
+  serverSideDatasource: any;
   ngOnInit(): void {
     this.columnDefs = [
       {
@@ -39,12 +35,19 @@ export class HomeComponent implements OnInit {
   }
 
   columnDefs: ColDef[] = [];
-  rowModelType: any = 'serverSide';
+  rowModelType: 'serverSide' = 'serverSide';
   handleError() {}
 
   getHttpData() {
     this.cryptoListService.getJSON().subscribe((data) => {
       this.rowData = data;
+    });
+  }
+
+  getData() {
+    this.cryptoListService.getJSONSSRM().subscribe((data: any) => {
+      this.serverSideDatasource = createServerSideDatasource(data.slice());
+      return this.serverSideDatasource;
     });
   }
   onCellValueChanged(params: any) {
@@ -53,11 +56,8 @@ export class HomeComponent implements OnInit {
   onGridReady(params: any) {
     this.gridApiActive = params.api;
     //this.getHttpData();
-    this.http.get<any[]>('assets/mock-data.json').subscribe((data) => {
-      var fakeServer = createFakeServer(data);
-      var datasource = createServerSideDatasource(fakeServer);
-      this.gridApiActive!.setServerSideDatasource(datasource);
-    });
+    //this.getData();
+    this.gridApiActive!.setServerSideDatasource(this.getData());
   }
 
   onSearchTextChanged() {
@@ -68,25 +68,13 @@ export class HomeComponent implements OnInit {
 function createServerSideDatasource(server: any): IServerSideDatasource {
   return {
     getRows: (params: any) => {
-      var response = server.getData(params.request);
       setTimeout(function () {
-        if (response.success) {
-          params.success({ rowData: response.rows });
+        if (params.success) {
+          params.success({ rowData: server });
         } else {
           params.fail();
         }
       }, 500);
-    },
-  };
-}
-function createFakeServer(allData: any[]) {
-  return {
-    getData: (request: IServerSideGetRowsRequest) => {
-      var requestedRows = allData.slice();
-      return {
-        success: true,
-        rows: requestedRows,
-      };
     },
   };
 }
