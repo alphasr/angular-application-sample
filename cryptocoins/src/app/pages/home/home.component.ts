@@ -65,12 +65,12 @@ export class HomeComponent implements OnInit {
   }
 }
 
-function createServerSideDatasource(server: any): IServerSideDatasource {
+function createServerSideDatasource(data: any): IServerSideDatasource {
   return {
     getRows: (params: any) => {
       setTimeout(function () {
         if (params.success) {
-          params.success({ rowData: server });
+          params.success({ rowData: data });
         } else {
           params.fail();
         }
