@@ -25,16 +25,28 @@ export class HomeComponent implements OnInit {
         editable: true,
         filter: 'agTextColumnFilter',
       },
-      { field: 'symbol', width: 80 },
+      { field: 'symbol', width: 80, filter: 'agTextColumnFilter' },
       {
         field: 'price',
         width: 80,
         filter: 'agNumberColumnFilter',
       },
     ];
+
+    this.gridOptions = {
+      rowSelection: 'single',
+      cacheBlockSize: 100,
+      maxBlocksInCache: 3,
+      enableServerSideFilter: true,
+      floatingFilter: true,
+      pagination: true,
+      paginationAutoPageSize: true,
+    };
   }
 
   columnDefs: ColDef[] = [];
+  public gridOptions: any;
+
   rowModelType: 'serverSide' = 'serverSide';
   handleError() {}
 
@@ -46,7 +58,7 @@ export class HomeComponent implements OnInit {
 
   getData() {
     this.cryptoListService.getJSON().subscribe((data: any) => {
-      this.serverSideDatasource = createServerSideDatasource(data.slice());
+      this.serverSideDatasource = createServerSideDatasource(data);
     });
   }
   onCellValueChanged(params: any) {
@@ -65,13 +77,11 @@ export class HomeComponent implements OnInit {
 function createServerSideDatasource(data: any): IServerSideDatasource {
   return {
     getRows: (params: any) => {
-      setTimeout(function () {
-        if (params.success) {
-          params.success({ rowData: data });
-        } else {
-          params.fail();
-        }
-      }, 500);
+      if (params.success) {
+        params.success({ rowData: data });
+      } else {
+        params.fail();
+      }
     },
   };
 }

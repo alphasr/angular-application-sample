@@ -17,8 +17,8 @@
         onCellValueChanged="{this.onCellValueChanged}"
         (cellValueChanged)="onCellValueChanged($event)"
         (gridReady)="onGridReady($event)"
-      >
-      </ag-grid-angular>
+        [gridOptions]="gridOptions"
+      ></ag-grid-angular>
     </div>
   </div>
 </div>
