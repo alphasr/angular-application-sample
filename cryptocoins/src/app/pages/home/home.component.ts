@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ColDef,
+  IGetRowsParams,
   IServerSideDatasource,
-  IServerSideGetRowsRequest,
+  ServerSideStoreType,
 } from 'ag-grid-community';
 import { Coin } from 'src/app/Coin';
 import { CryptolistService } from '../../services/cryptolist.service';
@@ -37,15 +38,13 @@ export class HomeComponent implements OnInit {
       rowSelection: 'single',
       cacheBlockSize: 100,
       maxBlocksInCache: 3,
-      enableServerSideFilter: true,
-      floatingFilter: true,
       pagination: true,
-      paginationAutoPageSize: true,
     };
   }
 
   columnDefs: ColDef[] = [];
   public gridOptions: any;
+  public serverSideStoreType: ServerSideStoreType = 'partial';
 
   rowModelType: 'serverSide' = 'serverSide';
   handleError() {}
@@ -58,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   getData() {
     this.cryptoListService.getJSON().subscribe((data: any) => {
-      this.serverSideDatasource = createServerSideDatasource(data);
+      this.serverSideDatasource = this.createServerSideDatasource(data);
     });
   }
   onCellValueChanged(params: any) {
@@ -72,16 +71,22 @@ export class HomeComponent implements OnInit {
   onSearchTextChanged() {
     this.gridApiActive.setQuickFilter(this.searchValue);
   }
-}
 
-function createServerSideDatasource(data: any): IServerSideDatasource {
-  return {
-    getRows: (params: any) => {
-      if (params.success) {
-        params.success({ rowData: data });
-      } else {
-        params.fail();
-      }
-    },
-  };
+  createServerSideDatasource(data: any): IServerSideDatasource {
+    return {
+      getRows: (params: any) => {
+        if (params.success) {
+          params.success({ rowData: data });
+          const filterModel = {
+            price: { filterType: 'number', type: 'equals', filter: '100' },
+            name: { filterType: 'text', type: 'contains', filter: 's' },
+          };
+          params.request.filterModel = { filterModel };
+          console.log(params.request.filterModel);
+        } else {
+          params.fail();
+        }
+      },
+    };
+  }
 }

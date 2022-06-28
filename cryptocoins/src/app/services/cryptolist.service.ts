@@ -6,11 +6,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CryptolistService {
-  jsonFile = 'assets/mock-data.json';
+  jsonFile = 'assets/mock.json';
 
   constructor(private http: HttpClient) {}
 
   getJSON(): Observable<any> {
     return this.http.get(this.jsonFile);
+  }
+  setFilter(params: any): Observable<any> {
+    return this.http.post('http//users', params);
   }
 }
