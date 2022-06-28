@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
             price: { filterType: 'number', type: 'equals', filter: '100' },
             name: { filterType: 'text', type: 'contains', filter: 's' },
           };
-          params.request.filterModel = { filterModel };
+          this.cryptoListService.setFilter(params, filterModel);
           console.log(params.request.filterModel);
         } else {
           params.fail();

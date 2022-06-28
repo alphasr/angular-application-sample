@@ -13,7 +13,7 @@ export class CryptolistService {
   getJSON(): Observable<any> {
     return this.http.get(this.jsonFile);
   }
-  setFilter(params: any): Observable<any> {
-    return this.http.post('http//users', params);
+  setFilter(params: any, filterModel: any) {
+    params.request.filterModel = { filterModel };
   }
 }
