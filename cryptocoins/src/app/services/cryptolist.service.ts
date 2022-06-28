@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Coin } from '../Coin';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,6 @@ export class CryptolistService {
     return this.http.get(this.jsonFile);
   }
   setFilter(params: any) {
-    console.log(params);
+    return this.http.get(this.jsonFile, { params });
   }
 }

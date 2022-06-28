@@ -75,18 +75,16 @@ export class HomeComponent implements OnInit {
   createServerSideDatasource(data: any): IServerSideDatasource {
     return {
       getRows: (params: any) => {
-        if (params.success) {
-          params.success({ rowData: data });
-          const filterModel = {
-            price: { filterType: 'number', type: 'equals', filter: '100' },
-            name: { filterType: 'text', type: 'contains', filter: 's' },
-          };
-          params.request.filterModel = { filterModel };
-          this.cryptoListService.setFilter(params);
-          // console.log(params.request.filterModel);
-        } else {
-          params.fail();
-        }
+        this.cryptoListService.setFilter(params).subscribe((dat: any) => {
+          this.serverSideDatasource = this.serverData(dat);
+        });
+      },
+    };
+  }
+  serverData(data: any) {
+    return {
+      getRows: (params: any) => {
+        params.success({ rowData: data });
       },
     };
   }
