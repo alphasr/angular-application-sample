@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ColDef,
-  IGetRowsParams,
-  IServerSideDatasource,
-  ServerSideStoreType,
-} from 'ag-grid-community';
+import { ColDef, ServerSideStoreType } from 'ag-grid-community';
 import { Coin } from 'src/app/Coin';
 import { CryptolistService } from '../../services/cryptolist.service';
 @Component({
@@ -48,28 +43,12 @@ export class HomeComponent implements OnInit {
 
   rowModelType: 'serverSide' = 'serverSide';
   handleError() {}
-
-  getHttpData() {
-    this.cryptoListService.getJSON().subscribe((data) => {
-      this.rowData = data;
-    });
-  }
-
-  getData() {
-    this.cryptoListService.getJSON().subscribe((data: any) => {
-      this.serverSideDatasource = this.createServerSideDatasource();
-    });
-  }
   onCellValueChanged(params: any) {
     console.log(JSON.stringify(params.value));
   }
   onGridReady(params: any) {
     this.gridApiActive = params.api;
     this.createServerSideDatasource();
-  }
-
-  onSearchTextChanged() {
-    this.gridApiActive.setQuickFilter(this.searchValue);
   }
 
   createServerSideDatasource() {
@@ -82,11 +61,4 @@ export class HomeComponent implements OnInit {
       },
     };
   }
-  // serverData(data: any) {
-  //   return {
-  //     getRows: (params: any) => {
-  //       params.success({ rowData: data });
-  //     },
-  //   };
-  // }
 }
