@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   getData() {
     this.cryptoListService.getJSON().subscribe((data: any) => {
-      this.serverSideDatasource = this.createServerSideDatasource(data);
+      this.serverSideDatasource = this.createServerSideDatasource();
     });
   }
   onCellValueChanged(params: any) {
@@ -65,27 +65,28 @@ export class HomeComponent implements OnInit {
   }
   onGridReady(params: any) {
     this.gridApiActive = params.api;
-    this.getData();
+    this.createServerSideDatasource();
   }
 
   onSearchTextChanged() {
     this.gridApiActive.setQuickFilter(this.searchValue);
   }
 
-  createServerSideDatasource(data: any): IServerSideDatasource {
-    return {
+  createServerSideDatasource() {
+    this.serverSideDatasource = {
       getRows: (params: any) => {
-        this.cryptoListService.setFilter(params).subscribe((dat: any) => {
-          this.serverSideDatasource = this.serverData(dat);
+        this.cryptoListService.setFilter(params).subscribe((data: any) => {
+          params.success({ rowData: data });
         });
+        params.fail();
       },
     };
   }
-  serverData(data: any) {
-    return {
-      getRows: (params: any) => {
-        params.success({ rowData: data });
-      },
-    };
-  }
+  // serverData(data: any) {
+  //   return {
+  //     getRows: (params: any) => {
+  //       params.success({ rowData: data });
+  //     },
+  //   };
+  // }
 }
