@@ -4,12 +4,15 @@
     <div class="page__content-data position-absolute text-center">
       <ag-grid-angular
         class="ag-theme-balham"
-        [rowData]="rowData"
         [columnDefs]="columnDefs"
+        [serverSideDatasource]="serverSideDatasource"
+        [serverSideStoreType]="serverSideStoreType"
+        [rowModelType]="rowModelType"
         onCellValueChanged="{this.onCellValueChanged}"
         (cellValueChanged)="onCellValueChanged($event)"
-      >
-      </ag-grid-angular>
+        (gridReady)="onGridReady($event)"
+        [gridOptions]="gridOptions"
+      ></ag-grid-angular>
     </div>
   </div>
 </div>

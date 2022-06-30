@@ -15,6 +15,8 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AppHeaderComponent } from './header/app-header/app-header.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import 'ag-grid-enterprise';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
